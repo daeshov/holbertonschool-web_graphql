@@ -14,11 +14,18 @@ const TaskType = new GraphQLObjectType({
 const RootQuery = new GraphQLObjectType({
   name: 'RootQueryType',
   fields: {
-    // Define queries here
+    task:{
+      type: TaskType,
+      args: {
+      id: { type: GraphQLString },
   },
+  resolve(parent, args) {
+  
+  },
+ },
+},
 });
 
-// Define the GraphQL schema
 module.exports = new GraphQLSchema({
   query: RootQuery,
 });
