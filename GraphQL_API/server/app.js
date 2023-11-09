@@ -3,11 +3,14 @@ const mongoose = require('mongoose');
 const {graphqlHTTP} = require('express-graphql');
 const schema = require('./schema/schema');
 const app = express();
+const cors = require('cors');
 
 mongoose.connect('mongodb+srv://daeshov:jtdt135101@cluster0.hgsnta2.mongodb.net/');
 mongoose.connection.once('open', () =>
   console.log('connected to database')
 );
+
+app.use(cors());
 
 app.use('/graphql', graphqlHTTP({
   schema,
